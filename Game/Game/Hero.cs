@@ -42,7 +42,7 @@ namespace TestProject
         {
             animation.Update(gameTime);
 
-            Move();
+            MoveWithMouse();
         }
 
         private Vector2 Limit(Vector2 v, float max)

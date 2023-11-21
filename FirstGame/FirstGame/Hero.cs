@@ -109,5 +109,10 @@ namespace FirstGame
             direction *= speed;
             position += direction;
         }
+
+        public void ChangeInputReader(IInputReader inputReader)
+        {
+            this.inputReader = inputReader;
+        }
     }
 }

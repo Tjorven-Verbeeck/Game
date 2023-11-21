@@ -77,7 +77,18 @@ namespace TestProject
             }
         }
 
-        
+        private void MoveWithMouse()
+        {
+            MouseState state = Mouse.GetState();
+            Vector2 mouseVector = new Vector2(state.X, state.Y);
+
+            position += speed;
+            var direction = mouseVector - position;
+            direction.Normalize();
+            direction = Vector2.Multiply(direction, 0.1f);
+            speed += direction;
+            speed = Limit(speed, 10);
+        }
 
 
 

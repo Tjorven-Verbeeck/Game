@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestProject
+namespace Game
 {
     public class Hero : IGameObject
     {
@@ -40,18 +40,7 @@ namespace TestProject
 
         public void update(GameTime gameTime)
         {
-            KeyboardState state = Keyboard.GetState();
-            var direction = Vector2.Zero;
-            if (state.IsKeyDown(Keys.Left))
-            {
-                direction.X = -1;
-            }
-            if (state.IsKeyDown(Keys.Right))
-            {
-                direction.X = 1;
-            }
-            direction *= speed;
-            position += direction;
+            Move();
 
             animation.Update(gameTime);
         }
@@ -67,9 +56,11 @@ namespace TestProject
             return v;
         }
 
-
         private Vector2 speed = new Vector2(1, 1);
         private Vector2 speedUp = new Vector2(0.1f, 0.1f);
+        
+        // Move with no input
+        /*
         private void Move()
         {
             position += speed;
@@ -87,7 +78,10 @@ namespace TestProject
                 speedUp.Y *= -1;
             }
         }
+        */
 
+        // Move with mousetracking
+        /*
         private void MoveWithMouse()
         {
             MouseState state = Mouse.GetState();
@@ -100,13 +94,24 @@ namespace TestProject
             speed += direction;
             speed = Limit(speed, 10);
         }
+        */
 
-
-
-
-
-
-
-
+        private IInputReader inputReader;
+        public Hero(Texture2D texture, IInputReader inputreader)
+        {
+            this.texture = texture;
+            this.inputReader = inputReader;
+            animation = new Animation();
+            position = new Vector2(1, 1);
+            speed = new Vector2(2, 2);
+            speedUp = new Vector2(0.1f, 0.1f);
+        }
+        // Move with keyboard
+        public void Move()
+        {
+            var direction = inputReader.ReadInput();
+            direction *= speed;
+            position += direction;
+        }
     }
 }

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace TestProject
+namespace Game
 {
     public class Game1 : Game
     {
@@ -23,16 +23,16 @@ namespace TestProject
         {
             // TODO: Add your initialization logic here
             base.Initialize();
-            hero = new Hero(heroTexture);
+            hero = new Hero(_heroTexture, new KeyboardReader());
         }
 
-        private Texture2D heroTexture;
+        private Texture2D _heroTexture;
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            heroTexture = Content.Load<Texture2D>("testSpritesheet");
+            _heroTexture = Content.Load<Texture2D>("testSpritesheet");
         }
 
         protected override void Update(GameTime gameTime)

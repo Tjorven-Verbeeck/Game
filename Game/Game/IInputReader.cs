@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    internal interface IGameObject
+    public interface IInputReader
     {
-        void update(GameTime gameTime);
-        void draw(SpriteBatch spriteBatch);
+        Vector2 ReadInput();
     }
 }

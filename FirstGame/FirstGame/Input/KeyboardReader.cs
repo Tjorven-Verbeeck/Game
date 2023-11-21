@@ -22,6 +22,14 @@ namespace FirstGame.Input
             {
                 direction.X = 1;
             }
+            if (state.IsKeyDown(Keys.Up))
+            {
+                direction.Y = -1;
+            }
+            if (state.IsKeyDown(Keys.Down))
+            {
+                direction.Y = 1;
+            }
             return direction;
         }
     }

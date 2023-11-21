@@ -40,9 +40,20 @@ namespace TestProject
 
         public void update(GameTime gameTime)
         {
-            animation.Update(gameTime);
+            KeyboardState state = Keyboard.GetState();
+            var direction = Vector2.Zero;
+            if (state.IsKeyDown(Keys.Left))
+            {
+                direction.X = -1;
+            }
+            if (state.IsKeyDown(Keys.Right))
+            {
+                direction.X = 1;
+            }
+            direction *= speed;
+            position += direction;
 
-            MoveWithMouse();
+            animation.Update(gameTime);
         }
 
         private Vector2 Limit(Vector2 v, float max)

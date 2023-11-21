@@ -9,6 +9,7 @@ namespace FirstGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -16,18 +17,22 @@ namespace FirstGame
             IsMouseVisible = true;
         }
 
+        private Rectangle _deelRectangle;
+        private Hero hero;
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
+            hero = new Hero(_heroTexture, new Input.KeyboardReader());
         }
 
+        private Texture2D _heroTexture;
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            _heroTexture = Content.Load<Texture2D>("testSpritesheet");
         }
 
         protected override void Update(GameTime gameTime)
@@ -36,16 +41,16 @@ namespace FirstGame
                 Exit();
 
             // TODO: Add your update logic here
-
+            hero.update(gameTime);
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
+            _spriteBatch.Begin();
+            hero.draw(_spriteBatch);
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }

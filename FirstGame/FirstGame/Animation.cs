@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FirstGame
 {
-    internal class Animation
+    public class Animation
     {
         public AnimationFrame CurrentFrame { get; set; }
         private List<AnimationFrame> frames;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FirstGame
 {
-    internal interface IGameObject
+    public interface IGameObject
     {
         void update(GameTime gameTime);
         void draw(SpriteBatch spriteBatch);

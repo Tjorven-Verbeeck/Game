@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FirstGame.Input;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -10,8 +11,9 @@ using System.Threading.Tasks;
 
 namespace FirstGame
 {
-    internal class Hero : IGameObject
+    public class Hero : IGameObject, IMovable
     {
+        private MovementManager movementManager = new MovementManager();
         private Texture2D texture;
         Animation animation;
 
@@ -37,7 +39,7 @@ namespace FirstGame
             speedUp = new Vector2(0.1f, 0.1f);
         }
 
-        private Vector2 position = new Vector2(0, 0);
+        private Vector2 position;
         public void draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, animation.CurrentFrame.SourceRectangle, Color.White);
@@ -62,8 +64,26 @@ namespace FirstGame
             return v;
         }
 
-        private Vector2 speed = new Vector2(1, 1);
+        private Vector2 speed;
         private Vector2 speedUp = new Vector2(0.1f, 0.1f);
+
+        public Vector2 Position 
+        { 
+            get { return position; } 
+            set { position = value; } //0,0
+        }
+        public Vector2 Speed
+        {
+            get { return speed; }
+            set { speed = value; } //1,1
+        }
+        public IInputReader InputReader 
+        {
+            get { return inputReader; }
+            set { inputReader = value; }
+        }
+
+
 
         // Move with no input
         /*
@@ -105,9 +125,7 @@ namespace FirstGame
         // Move with keyboard
         public void Move()
         {
-            var direction = inputReader.ReadInput();
-            direction *= speed;
-            position += direction;
+            movementManager.Move(this);
         }
 
         public void ChangeInputReader(IInputReader inputReader)

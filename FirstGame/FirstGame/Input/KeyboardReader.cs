@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FirstGame.Input
 {
-    internal class KeyboardReader : IInputReader
+    public class KeyboardReader : IInputReader
     {
         public Vector2 ReadInput()
         {

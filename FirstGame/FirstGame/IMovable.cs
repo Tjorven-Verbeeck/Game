@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace FirstGame
 {
-    public interface IInputReader
+     public interface IMovable
     {
-        Vector2 ReadInput();
+        public Vector2 Position { get; set; }
+        public Vector2 Speed { get; set; }
+        public IInputReader InputReader { get; set; }
     }
 }

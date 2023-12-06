@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,13 +13,78 @@ namespace FirstGame
         {
             var direction = movable.InputReader.ReadInput();
 
+            float maxSpeed = 10;
+
             var distance = direction * movable.Speed;
+            movable.Speed = Limit(movable.Speed, maxSpeed);
             var futurePosition = movable.Position + distance;
-            if (futurePosition.X + 140 > 800 || futurePosition.X < 0 || futurePosition.Y + 108 > 480 || futurePosition.Y < 0)
+            if (direction.Equals(new Vector2(0,0)))
+            {
+                movable.Speed = new Vector2(1, 1);
+            }
+            else
+            {
+                movable.Speed += movable.SpeedUp;
+            }
+
+            if (futurePosition.X + 140 < 800 && futurePosition.X > 0 && futurePosition.Y + 108 < 480 && futurePosition.Y > 0)
             {
                 movable.Position = futurePosition;
             }
-            movable.Position += distance;
+
         }
+
+
+        private Vector2 Limit(Vector2 speed, float maxSpeed)
+        {
+            if (speed.Length() > maxSpeed)
+            {
+                var ratio = maxSpeed / speed.Length();
+                speed.X *= ratio;
+                speed.Y *= ratio;
+            }
+            return speed;
+        }
+
+
+
+
+
+        // Move with no input
+        /*
+        private void Move()
+        {
+            position += speed;
+            speed += speedUp;
+            float maxSpeed = 10;
+            speed = Limit(speed, maxSpeed);
+            if (position.X + 140 > 800 || position.X < 0)
+            {
+                speed.X *= -1;
+                speedUp.X *= -1;
+            }
+            if (position.Y + 108 > 480 || position.Y < 0)
+            {
+                speed.Y *= -1;
+                speedUp.Y *= -1;
+            }
+        }
+        */
+
+        // Move with mousetracking
+        /*
+        private void MoveWithMouse()
+        {
+            MouseState state = Mouse.GetState();
+            Vector2 mouseVector = new Vector2(state.X, state.Y);
+
+            position += speed;
+            var direction = mouseVector - position;
+            direction.Normalize();
+            direction = Vector2.Multiply(direction, 0.1f);
+            speed += direction;
+            speed = Limit(speed, 10);
+        }
+        */
     }
 }

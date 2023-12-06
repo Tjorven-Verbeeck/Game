@@ -17,7 +17,6 @@ namespace FirstGame
             IsMouseVisible = true;
         }
 
-        private Rectangle _deelRectangle;
         private Hero hero;
         protected override void Initialize()
         {

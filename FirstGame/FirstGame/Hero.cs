@@ -15,10 +15,32 @@ namespace FirstGame
     {
         private MovementManager movementManager = new MovementManager();
         private Texture2D texture;
-        Animation animation;
-
-
+        private Animation animation;
+        private Vector2 position;
+        public Vector2 Position
+        {
+            get { return position; }
+            set { position = value; }
+        }
+        private Vector2 speed;
+        public Vector2 Speed
+        {
+            get { return speed; }
+            set { speed = value; }
+        }
+        private Vector2 speedUp;
+        public Vector2 SpeedUp
+        {
+            get { return speedUp; }
+            set { speedUp = value; }
+        }
         private IInputReader inputReader;
+        public IInputReader InputReader
+        {
+            get { return inputReader; }
+            set { inputReader = value; }
+        }
+
         public Hero(Texture2D texture, IInputReader inputreader)
         {
             this.texture = texture;
@@ -34,12 +56,12 @@ namespace FirstGame
             animation.AddFrame(new AnimationFrame(new Rectangle(648, 0, 108, 140)));
             animation.AddFrame(new AnimationFrame(new Rectangle(756, 0, 108, 140)));
 
-            position = new Vector2(1, 1);
-            speed = new Vector2(2, 2);
+            position = new Vector2(10, 10);
+            speed = new Vector2(1, 1);
             speedUp = new Vector2(0.1f, 0.1f);
         }
 
-        private Vector2 position;
+        
         public void draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(texture, position, animation.CurrentFrame.SourceRectangle, Color.White);
@@ -53,76 +75,6 @@ namespace FirstGame
             animation.Update(gameTime);
         }
 
-        private Vector2 Limit(Vector2 v, float max)
-        {
-            if (v.Length() > max)
-            {
-                var ratio = max / v.Length();
-                v.X *= ratio;
-                v.Y *= ratio;
-            }
-            return v;
-        }
-
-        private Vector2 speed;
-        private Vector2 speedUp = new Vector2(0.1f, 0.1f);
-
-        public Vector2 Position 
-        { 
-            get { return position; } 
-            set { position = value; } //0,0
-        }
-        public Vector2 Speed
-        {
-            get { return speed; }
-            set { speed = value; } //1,1
-        }
-        public IInputReader InputReader 
-        {
-            get { return inputReader; }
-            set { inputReader = value; }
-        }
-
-
-
-        // Move with no input
-        /*
-        private void Move()
-        {
-            position += speed;
-            speed += speedUp;
-            float maxSpeed = 10;
-            speed = Limit(speed, maxSpeed);
-            if (position.X + 140 > 800 || position.X < 0)
-            {
-                speed.X *= -1;
-                speedUp.X *= -1;
-            }
-            if (position.Y + 108 > 480 || position.Y < 0)
-            {
-                speed.Y *= -1;
-                speedUp.Y *= -1;
-            }
-        }
-        */
-
-        // Move with mousetracking
-        /*
-        private void MoveWithMouse()
-        {
-            MouseState state = Mouse.GetState();
-            Vector2 mouseVector = new Vector2(state.X, state.Y);
-
-            position += speed;
-            var direction = mouseVector - position;
-            direction.Normalize();
-            direction = Vector2.Multiply(direction, 0.1f);
-            speed += direction;
-            speed = Limit(speed, 10);
-        }
-        */
-
-        // Move with keyboard
         public void Move()
         {
             movementManager.Move(this);

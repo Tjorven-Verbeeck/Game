@@ -29,7 +29,7 @@ namespace FirstGame
         {
             CurrentFrame = frames[counter];
             secondcounter += gameTime.ElapsedGameTime.TotalSeconds;
-            int fps = 15;
+            int fps = 6;
 
             if (secondcounter > 1d / fps)
             {

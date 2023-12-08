@@ -15,7 +15,10 @@ namespace FirstGame
     {
         private MovementManager movementManager = new MovementManager();
         private Texture2D texture;
-        private Animation animation;
+        private Animation heroForwards;
+        private Animation heroBackwards;
+        private Animation heroLeft;
+        private Animation heroRight;
         private Vector2 position;
         public Vector2 Position
         {
@@ -46,15 +49,25 @@ namespace FirstGame
             this.texture = texture;
             this.inputReader = inputreader;
 
-            animation = new Animation();
-            animation.AddFrame(new AnimationFrame(new Rectangle(0, 0, 108, 140)));
-            animation.AddFrame(new AnimationFrame(new Rectangle(108, 0, 108, 140)));
-            animation.AddFrame(new AnimationFrame(new Rectangle(216, 0, 108, 140)));
-            animation.AddFrame(new AnimationFrame(new Rectangle(324, 0, 108, 140)));
-            animation.AddFrame(new AnimationFrame(new Rectangle(432, 0, 108, 140)));
-            animation.AddFrame(new AnimationFrame(new Rectangle(540, 0, 108, 140)));
-            animation.AddFrame(new AnimationFrame(new Rectangle(648, 0, 108, 140)));
-            animation.AddFrame(new AnimationFrame(new Rectangle(756, 0, 108, 140)));
+            heroForwards = new Animation();
+            heroForwards.AddFrame(new AnimationFrame(new Rectangle(6, 0, 98, 106)));
+            heroForwards.AddFrame(new AnimationFrame(new Rectangle(133, 0, 98, 106)));
+            heroForwards.AddFrame(new AnimationFrame(new Rectangle(250, 0, 98, 106)));
+
+            heroBackwards = new Animation();
+            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(0, 133, 98, 106)));
+            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(127, 133, 98, 106)));
+            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(256, 133, 98, 106)));
+
+            heroRight = new Animation();
+            heroRight.AddFrame(new AnimationFrame(new Rectangle(6, 266, 98, 100)));
+            heroRight.AddFrame(new AnimationFrame(new Rectangle(133, 266, 98, 100)));
+            heroRight.AddFrame(new AnimationFrame(new Rectangle(250, 266, 98, 100)));
+
+            heroLeft = new Animation();
+            heroLeft.AddFrame(new AnimationFrame(new Rectangle(6, 399, 98, 109)));
+            heroLeft.AddFrame(new AnimationFrame(new Rectangle(133, 399, 98, 109)));
+            heroLeft.AddFrame(new AnimationFrame(new Rectangle(250, 399, 98, 109)));
 
             position = new Vector2(10, 10);
             speed = new Vector2(1, 1);
@@ -64,15 +77,44 @@ namespace FirstGame
         
         public void draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, animation.CurrentFrame.SourceRectangle, Color.White);
-
+            if (inputReader.ReadInput().X == -1)
+            {
+                spriteBatch.Draw(texture, position, heroLeft.CurrentFrame.SourceRectangle, Color.White);
+            }
+            else if (inputReader.ReadInput().X == 1)
+            {
+                spriteBatch.Draw(texture, position, heroRight.CurrentFrame.SourceRectangle, Color.White);
+            }
+            else if (inputReader.ReadInput().Y == -1)
+            {
+                spriteBatch.Draw(texture, position, heroBackwards.CurrentFrame.SourceRectangle, Color.White);
+            }
+            else if (inputReader.ReadInput().Y == 1 || (inputReader.ReadInput().X == 0 && inputReader.ReadInput().Y == 0))
+            {
+                spriteBatch.Draw(texture, position, heroForwards.CurrentFrame.SourceRectangle, Color.White);
+            }
         }
 
         public void update(GameTime gameTime)
         {
             Move();
 
-            animation.Update(gameTime);
+            if (inputReader.ReadInput().X == -1)
+            {
+                heroLeft.Update(gameTime);
+            }
+            else if (inputReader.ReadInput().X == 1)
+            {
+                heroRight.Update(gameTime);
+            }
+            else if (inputReader.ReadInput().Y == -1)
+            {
+                heroBackwards.Update(gameTime);
+            }
+            else if (inputReader.ReadInput().Y == 1)
+            {
+                heroForwards.Update(gameTime);
+            }
         }
 
         public void Move()

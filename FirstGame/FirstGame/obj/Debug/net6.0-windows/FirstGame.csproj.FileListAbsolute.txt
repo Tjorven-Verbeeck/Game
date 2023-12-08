@@ -1,4 +1,3 @@
-C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\testSpritesheet.xnb
 C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\FirstGame.exe
 C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\FirstGame.deps.json
 C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\FirstGame.runtimeconfig.json
@@ -36,3 +35,4 @@ C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\obj\Debug\n
 C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\obj\Debug\net6.0-windows\FirstGame.pdb
 C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\obj\Debug\net6.0-windows\FirstGame.genruntimeconfig.cache
 C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\obj\Debug\net6.0-windows\ref\FirstGame.dll
+C:\Users\tjorv\OneDrive\Bureaublad\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\black-mage(Hero).xnb

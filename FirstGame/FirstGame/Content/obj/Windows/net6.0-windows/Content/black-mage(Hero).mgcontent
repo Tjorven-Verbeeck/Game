@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/tjorv/OneDrive/Bureaublad/Git Game/Game/FirstGame/FirstGame/Content/testSpritesheet.png</SourceFile>
-  <SourceTime>2023-10-09T17:29:54.486331+02:00</SourceTime>
-  <DestFile>C:/Users/tjorv/OneDrive/Bureaublad/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/testSpritesheet.xnb</DestFile>
-  <DestTime>2023-12-08T13:26:13.042975+01:00</DestTime>
+  <SourceFile>C:/Users/tjorv/OneDrive/Bureaublad/Git Game/Game/FirstGame/FirstGame/Content/black-mage(Hero).png</SourceFile>
+  <SourceTime>2023-12-08T13:56:06.4345049+01:00</SourceTime>
+  <DestFile>C:/Users/tjorv/OneDrive/Bureaublad/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/Content/black-mage(Hero).xnb</DestFile>
+  <DestTime>2023-12-08T13:58:12.732478+01:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

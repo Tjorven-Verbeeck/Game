@@ -9,6 +9,7 @@ namespace FirstGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private Texture2D _heroForwardsTexture;
 
         public Game1()
         {
@@ -22,16 +23,16 @@ namespace FirstGame
         {
             // TODO: Add your initialization logic here
             base.Initialize();
-            hero = new Hero(_heroTexture, new Input.KeyboardReader());
+            hero = new Hero(_heroForwardsTexture, new Input.KeyboardReader());
         }
 
-        private Texture2D _heroTexture;
+        
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            _heroTexture = Content.Load<Texture2D>("testSpritesheet");
+            _heroForwardsTexture = Content.Load<Texture2D>("black-mage(Hero)");
         }
 
         protected override void Update(GameTime gameTime)

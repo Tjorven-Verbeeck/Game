@@ -1,4 +1,6 @@
 ﻿using FirstGame.Input;
+using FirstGame.Interfaces;
+using FirstGame.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -9,11 +11,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstGame
+namespace FirstGame.Characters
 {
     public class Hero : IGameObject, IMovable
     {
-        private MovementManager movementManager = new MovementManager();
+        private Managers.MovementManager movementManager = new MovementManager();
         private Texture2D texture;
         private Animation heroForwards;
         private Animation heroBackwards;
@@ -47,16 +49,16 @@ namespace FirstGame
         public Hero(Texture2D texture, IInputReader inputreader)
         {
             this.texture = texture;
-            this.inputReader = inputreader;
+            inputReader = inputreader;
 
             heroForwards = new Animation();
             heroForwards.AddFrame(new AnimationFrame(new Rectangle(6, 0, 98, 106)));
             heroForwards.AddFrame(new AnimationFrame(new Rectangle(133, 0, 98, 106)));
-            heroForwards.AddFrame(new AnimationFrame(new Rectangle(250, 0, 98, 106)));
+            heroForwards.AddFrame(new AnimationFrame(new Rectangle(260, 0, 98, 106)));
 
             heroBackwards = new Animation();
             heroBackwards.AddFrame(new AnimationFrame(new Rectangle(0, 133, 98, 106)));
-            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(127, 133, 98, 106)));
+            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(125, 133, 98, 106)));
             heroBackwards.AddFrame(new AnimationFrame(new Rectangle(256, 133, 98, 106)));
 
             heroRight = new Animation();
@@ -74,7 +76,7 @@ namespace FirstGame
             speedUp = new Vector2(0.1f, 0.1f);
         }
 
-        
+
         public void draw(SpriteBatch spriteBatch)
         {
             if (inputReader.ReadInput().X == -1)
@@ -89,7 +91,7 @@ namespace FirstGame
             {
                 spriteBatch.Draw(texture, position, heroBackwards.CurrentFrame.SourceRectangle, Color.White);
             }
-            else if (inputReader.ReadInput().Y == 1 || (inputReader.ReadInput().X == 0 && inputReader.ReadInput().Y == 0))
+            else if (inputReader.ReadInput().Y == 1 || inputReader.ReadInput().X == 0 && inputReader.ReadInput().Y == 0)
             {
                 spriteBatch.Draw(texture, position, heroForwards.CurrentFrame.SourceRectangle, Color.White);
             }

@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FirstGame.Interfaces;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstGame
+namespace FirstGame.Managers
 {
     public class MovementManager
     {
@@ -18,7 +19,7 @@ namespace FirstGame
             var distance = direction * movable.Speed;
             movable.Speed = Limit(movable.Speed, maxSpeed);
             var futurePosition = movable.Position + distance;
-            if (direction.Equals(new Vector2(0,0)))
+            if (direction.Equals(new Vector2(0, 0)))
             {
                 movable.Speed = new Vector2(1, 1);
             }

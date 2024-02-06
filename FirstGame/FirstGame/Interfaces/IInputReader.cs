@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FirstGame
+namespace FirstGame.Interfaces
 {
     public interface IInputReader
     {

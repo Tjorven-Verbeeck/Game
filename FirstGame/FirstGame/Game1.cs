@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FirstGame.Characters;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct2D1.Effects;
 
 namespace FirstGame
 {
@@ -9,7 +11,7 @@ namespace FirstGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private Texture2D _heroForwardsTexture;
+        private Texture2D _heroTexture;
 
         public Game1()
         {
@@ -19,20 +21,20 @@ namespace FirstGame
         }
 
         private Hero hero;
+        private int scale = 1;
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
             base.Initialize();
-            hero = new Hero(_heroForwardsTexture, new Input.KeyboardReader());
+            hero = new Hero(_heroTexture, new Input.KeyboardReader());
         }
 
-        
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            _heroForwardsTexture = Content.Load<Texture2D>("black-mage(Hero)");
+            _heroTexture = Content.Load<Texture2D>("black-mage(Hero)");
         }
 
         protected override void Update(GameTime gameTime)

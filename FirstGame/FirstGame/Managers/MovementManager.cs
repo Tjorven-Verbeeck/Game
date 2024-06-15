@@ -1,4 +1,5 @@
 ﻿using FirstGame.Interfaces;
+using FirstGame.Sprites;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -12,27 +13,30 @@ namespace FirstGame.Managers
     {
         public void Move(IMovable movable)
         {
-            var direction = movable.InputReader.ReadInput();
-
-            float maxSpeed = 10;
-
-            var distance = direction * movable.Speed;
-            movable.Speed = Limit(movable.Speed, maxSpeed);
-            var futurePosition = movable.Position + distance;
-            if (direction.Equals(new Vector2(0, 0)))
+            // Use InputReader and SpeedUp if movable is Hero
+            if (movable is Hero hero)
             {
-                movable.Speed = new Vector2(1, 1);
-            }
-            else
-            {
-                movable.Speed += movable.SpeedUp;
-            }
+                var direction = hero.InputReader.ReadInput();
 
-            if (futurePosition.X + 140 < 800 && futurePosition.X > 0 && futurePosition.Y + 108 < 480 && futurePosition.Y > 0)
-            {
-                movable.Position = futurePosition;
-            }
+                float maxSpeed = 10;
 
+                var distance = direction * hero.Speed;
+                hero.Speed = Limit(hero.Speed, maxSpeed);
+                var futurePosition = hero.Position + distance;
+                if (direction.Equals(new Vector2(0, 0)))
+                {
+                    hero.Speed = new Vector2(1, 1);
+                }
+                else
+                {
+                    hero.Speed += hero.SpeedUp;
+                }
+
+                if (futurePosition.X + 140 < 800 && futurePosition.X > 0 && futurePosition.Y + 108 < 480 && futurePosition.Y > 0)
+                {
+                    hero.Position = futurePosition;
+                }
+            }
         }
 
 

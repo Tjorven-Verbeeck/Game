@@ -7,7 +7,7 @@ using SharpDX.Direct3D9;
 
 namespace FirstGame.Sprites
 {
-    public class Hero : Sprite, IGameObject, IMovable
+    public class Hero : Sprite
     {
         private MovementManager movementManager = new MovementManager();
         private Animation heroForwards;

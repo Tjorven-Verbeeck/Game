@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FirstGame.Interfaces;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace FirstGame.Sprites
 {
-    public class Sprite
+    public class Sprite : IGameObject, IMovable
     {
         public Vector2 Position { get; set; }
         public Texture2D Texture { get; set; }
@@ -11,10 +12,10 @@ namespace FirstGame.Sprites
         public Vector2 Speed { get; set; }
 
         // Health points
-        public int HP { get; set; }
+        protected int HP { get; set; }
 
         // Alive status
-        public bool IsDead { get; set; }
+        protected bool IsDead { get; set; }
 
         public Sprite(Texture2D texture)
         {

@@ -11,7 +11,5 @@ namespace FirstGame.Interfaces
     {
         public Vector2 Position { get; set; }
         public Vector2 Speed { get; set; }
-        public Vector2 SpeedUp { get; set; }
-        public IInputReader InputReader { get; set; }
     }
 }

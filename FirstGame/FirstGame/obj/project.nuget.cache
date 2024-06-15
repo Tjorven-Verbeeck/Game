@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eP3VKQCcpiaywlDuF9jFGJPudpHmniyF/0Lcq3ItVye29tivoScpdw2qZ+NSWYvQEijb5GOWvicNCwYgvZL8/Q==",
+  "dgSpecHash": "lcaYc8oEngv3iCbx32B6GRbwcA+Jjpq4afcv4udW4g1jDP5hEWLbC7/+p4kDt7x5uKKDoCqA/HEoSFxPG1zEGA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj",
+  "projectFilePath": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Github projecten\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tjorv\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Users\\tjorv\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",
@@ -124,7 +124,11 @@
     "C:\\Users\\tjorv\\.nuget\\packages\\system.xml.xdocument\\4.0.11\\system.xml.xdocument.4.0.11.nupkg.sha512",
     "C:\\Users\\tjorv\\.nuget\\packages\\system.xml.xmldocument\\4.0.1\\system.xml.xmldocument.4.0.1.nupkg.sha512",
     "C:\\Users\\tjorv\\.nuget\\packages\\system.xml.xpath\\4.0.1\\system.xml.xpath.4.0.1.nupkg.sha512",
-    "C:\\Users\\tjorv\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512"
+    "C:\\Users\\tjorv\\.nuget\\packages\\system.xml.xpath.xdocument\\4.0.1\\system.xml.xpath.xdocument.4.0.1.nupkg.sha512",
+    "C:\\Users\\tjorv\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.31\\microsoft.windowsdesktop.app.ref.6.0.31.nupkg.sha512",
+    "C:\\Users\\tjorv\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.31\\microsoft.netcore.app.ref.6.0.31.nupkg.sha512",
+    "C:\\Users\\tjorv\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.31\\microsoft.aspnetcore.app.ref.6.0.31.nupkg.sha512",
+    "C:\\Users\\tjorv\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.31\\microsoft.netcore.app.host.win-x64.6.0.31.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,4 +1,4 @@
-﻿using FirstGame.Characters;
+﻿using FirstGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -39,11 +39,11 @@ namespace FirstGame
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // TODO: Add your update logic here
-            hero.update(gameTime);
+            hero.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -51,7 +51,7 @@ namespace FirstGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
             _spriteBatch.Begin();
-            hero.draw(_spriteBatch);
+            hero.Draw(_spriteBatch);
             _spriteBatch.End();
             base.Draw(gameTime);
         }

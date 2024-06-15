@@ -13,24 +13,25 @@ namespace FirstGame.Input
     {
         public Vector2 ReadInput()
         {
-            KeyboardState state = Keyboard.GetState();
+            KeyboardState currentState = Keyboard.GetState();
             var direction = Vector2.Zero;
-            if (state.IsKeyDown(Keys.Left))
+            if (currentState.IsKeyDown(Keys.Q))
             {
                 direction.X = -1;
             }
-            if (state.IsKeyDown(Keys.Right))
+            if (currentState.IsKeyDown(Keys.D))
             {
                 direction.X = 1;
             }
-            if (state.IsKeyDown(Keys.Up))
+            if (currentState.IsKeyDown(Keys.Z))
             {
                 direction.Y = -1;
             }
-            if (state.IsKeyDown(Keys.Down))
+            if (currentState.IsKeyDown(Keys.S))
             {
                 direction.Y = 1;
             }
+            KeyboardState previousState = currentState;
             return direction;
         }
     }

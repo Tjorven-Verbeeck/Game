@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj": {}
+    "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Github projecten\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj": {
+    "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Github projecten\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj",
+        "projectUniqueName": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Github projecten\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj",
         "projectName": "FirstGame",
-        "projectPath": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj",
+        "projectPath": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Github projecten\\Git Game\\Game\\FirstGame\\FirstGame\\FirstGame.csproj",
         "packagesPath": "C:\\Users\\tjorv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Git Game\\Game\\FirstGame\\FirstGame\\obj\\",
+        "outputPath": "C:\\Users\\tjorv\\OneDrive\\Bureaublad\\Github projecten\\Git Game\\Game\\FirstGame\\FirstGame\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tjorv\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -60,6 +65,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.31, 6.0.31]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -68,7 +91,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -52,7 +52,7 @@ namespace FirstGame.Managers
 
 
         // Move with no input
-        /*
+        /*q
         private void Move()
         {
             position += speed;

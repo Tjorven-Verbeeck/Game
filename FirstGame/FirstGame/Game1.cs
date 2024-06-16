@@ -1,4 +1,5 @@
-﻿using FirstGame.Sprites;
+﻿using FirstGame.Managers;
+using FirstGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,6 +12,9 @@ namespace FirstGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        private int _screenWidth = 1920;
+        private int _screenHeight = 1080;
+
         private Texture2D _heroTexture;
 
         public Game1()
@@ -21,11 +25,17 @@ namespace FirstGame
         }
 
         private Hero hero;
-        private int scale = 1;
+        public float scale = 3;
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
             base.Initialize();
+
+            _graphics.PreferredBackBufferWidth = _screenWidth;
+            _graphics.PreferredBackBufferHeight = _screenHeight;
+            _graphics.IsFullScreen = true;
+            _graphics.ApplyChanges();
+
             hero = new Hero(_heroTexture, new Input.KeyboardReader());
         }
 
@@ -34,7 +44,7 @@ namespace FirstGame
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            _heroTexture = Content.Load<Texture2D>("black-mage(Hero)");
+            _heroTexture = Content.Load<Texture2D>("Hero");
         }
 
         protected override void Update(GameTime gameTime)

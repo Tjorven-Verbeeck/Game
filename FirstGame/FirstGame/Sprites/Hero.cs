@@ -4,11 +4,13 @@ using FirstGame.Input;
 using FirstGame.Interfaces;
 using FirstGame.Managers;
 using SharpDX.Direct3D9;
+using SharpDX.Direct2D1.Effects;
 
 namespace FirstGame.Sprites
 {
     public class Hero : Sprite
     {
+        private Game1 game1Instance = new Game1();
         private MovementManager movementManager = new MovementManager();
         private Animation heroForwards;
         private Animation heroBackwards;
@@ -26,24 +28,24 @@ namespace FirstGame.Sprites
 
             // Initialize animations, positions, etc.
             heroForwards = new Animation();
-            heroForwards.AddFrame(new AnimationFrame(new Rectangle(6, 0, 98, 106)));
-            heroForwards.AddFrame(new AnimationFrame(new Rectangle(133, 0, 98, 106)));
-            heroForwards.AddFrame(new AnimationFrame(new Rectangle(260, 0, 98, 106)));
+            heroForwards.AddFrame(new AnimationFrame(new Rectangle(1, 1, 32, 32)));
+            heroForwards.AddFrame(new AnimationFrame(new Rectangle(37, 1, 32, 32)));
+            heroForwards.AddFrame(new AnimationFrame(new Rectangle(73, 1, 32, 32)));
 
             heroBackwards = new Animation();
-            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(0, 133, 98, 106)));
-            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(125, 133, 98, 106)));
-            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(256, 133, 98, 106)));
+            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(2, 39, 32, 32)));
+            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(38, 39, 32, 32)));
+            heroBackwards.AddFrame(new AnimationFrame(new Rectangle(74, 39, 32, 32)));
 
             heroRight = new Animation();
-            heroRight.AddFrame(new AnimationFrame(new Rectangle(6, 266, 98, 100)));
-            heroRight.AddFrame(new AnimationFrame(new Rectangle(133, 266, 98, 100)));
-            heroRight.AddFrame(new AnimationFrame(new Rectangle(250, 266, 98, 100)));
+            heroRight.AddFrame(new AnimationFrame(new Rectangle(3, 75, 32, 32)));
+            heroRight.AddFrame(new AnimationFrame(new Rectangle(38, 75, 32, 32)));
+            heroRight.AddFrame(new AnimationFrame(new Rectangle(73, 75, 32, 32)));
 
             heroLeft = new Animation();
-            heroLeft.AddFrame(new AnimationFrame(new Rectangle(6, 399, 98, 109)));
-            heroLeft.AddFrame(new AnimationFrame(new Rectangle(133, 399, 98, 109)));
-            heroLeft.AddFrame(new AnimationFrame(new Rectangle(250, 399, 98, 109)));
+            heroLeft.AddFrame(new AnimationFrame(new Rectangle(3, 112, 32, 32)));
+            heroLeft.AddFrame(new AnimationFrame(new Rectangle(38, 112, 32, 32)));
+            heroLeft.AddFrame(new AnimationFrame(new Rectangle(73, 112, 32, 32)));
 
             Position = new Vector2(10, 10);
             Speed = new Vector2(1, 1);
@@ -79,19 +81,19 @@ namespace FirstGame.Sprites
             // Implement hero-specific draw logic
             if (InputReader.ReadInput().X == -1)
             {
-                spriteBatch.Draw(Texture, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White);
+                spriteBatch.Draw(Texture, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
             }
             else if (InputReader.ReadInput().X == 1)
             {
-                spriteBatch.Draw(Texture, Position, heroRight.CurrentFrame.SourceRectangle, Color.White);
+                spriteBatch.Draw(Texture, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
             }
             else if (InputReader.ReadInput().Y == -1)
             {
-                spriteBatch.Draw(Texture, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White);
+                spriteBatch.Draw(Texture, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
             }
             else if (InputReader.ReadInput().Y == 1 || InputReader.ReadInput().X == 0 && InputReader.ReadInput().Y == 0)
             {
-                spriteBatch.Draw(Texture, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White);
+                spriteBatch.Draw(Texture, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
             }
         }
 

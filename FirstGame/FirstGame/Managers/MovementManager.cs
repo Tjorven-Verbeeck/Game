@@ -1,6 +1,7 @@
 ﻿using FirstGame.Interfaces;
 using FirstGame.Sprites;
 using Microsoft.Xna.Framework;
+using SharpDX.Direct2D1.Effects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace FirstGame.Managers
 {
     public class MovementManager
     {
+        private Game1 game1Instance = new Game1();
         public void Move(IMovable movable)
         {
             // Use InputReader and SpeedUp if movable is Hero
@@ -32,7 +34,7 @@ namespace FirstGame.Managers
                     hero.Speed += hero.SpeedUp;
                 }
 
-                if (futurePosition.X + 140 < 800 && futurePosition.X > 0 && futurePosition.Y + 108 < 480 && futurePosition.Y > 0)
+                if (futurePosition.X + (32 * game1Instance.scale) < 1920 && futurePosition.X > 0 && futurePosition.Y + (32 * game1Instance.scale) < 1080 && futurePosition.Y > 0)
                 {
                     hero.Position = futurePosition;
                 }

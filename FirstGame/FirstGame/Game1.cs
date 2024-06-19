@@ -17,8 +17,8 @@ namespace FirstGame
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        private int _screenWidth = 1080;
-        private int _screenHeight = 800;
+        private int _screenWidth = 1920;
+        private int _screenHeight = 1080;
 
         private Texture2D _heroTexture;
         private Texture2D _buttonTexture;
@@ -45,7 +45,8 @@ namespace FirstGame
 
             _graphics.PreferredBackBufferWidth = _screenWidth;
             _graphics.PreferredBackBufferHeight = _screenHeight;
-            _graphics.IsFullScreen = false;
+            _graphics.HardwareModeSwitch = false;
+            _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
 
             

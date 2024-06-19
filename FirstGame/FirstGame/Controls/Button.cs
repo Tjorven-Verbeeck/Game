@@ -17,7 +17,6 @@ namespace FirstGame.Controls
     {
         private SpriteFont _font;
         private Texture2D _texture;
-        private Rectangle _mouseRectangle;
 
         public event EventHandler Click;
 
@@ -39,20 +38,22 @@ namespace FirstGame.Controls
         }
 
         public void Update(GameTime gameTime)
-        {
+        { 
             if (InputReader is MouseReader mouseReader)
             {
-
-                _mouseRectangle = new Rectangle(mouseReader.GetMouseState().X, mouseReader.GetMouseState().Y, 1, 1);
-                Debug.WriteLine(_mouseRectangle);
-
-                if (_mouseRectangle.Intersects(Rectangle))
+                mouseReader.UpdateMouseState();
+                Rectangle mouseRect = mouseReader.GetMouseCursor();
+                if (mouseRect.Intersects(Rectangle))
                 {
+                    PenColor = Color.DarkGray;
                         if (mouseReader.WasLeftButtonReleased())
                         {
                             Click?.Invoke(this, new EventArgs());
                         }
-
+                }
+                else
+                {
+                    PenColor = Color.White;
                 }
             }
         }

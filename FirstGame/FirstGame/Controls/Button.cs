@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct2D1.Effects;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace FirstGame.Controls
 {
-    internal class Button
+    internal class Button : Component
     {
         private SpriteFont _font;
         private Texture2D _texture;

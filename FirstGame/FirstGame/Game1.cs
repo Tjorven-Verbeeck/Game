@@ -28,12 +28,6 @@ namespace FirstGame
 
         public static Random random;
 
-
-
-
-
-
-
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -41,7 +35,6 @@ namespace FirstGame
             IsMouseVisible = true;
         }
 
-        public float scale = 3;
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -52,10 +45,6 @@ namespace FirstGame
             _graphics.HardwareModeSwitch = false;
             _graphics.IsFullScreen = true;
             _graphics.ApplyChanges();
-
-            
-
-            
         }
 
         protected override void LoadContent()
@@ -68,10 +57,6 @@ namespace FirstGame
             _currentState = new MenuState(Window, this, GraphicsDevice, Content);
             _currentState.LoadContent();
             _nextState = null;
-
-            
-
-            
         }
 
         protected override void Update(GameTime gameTime)

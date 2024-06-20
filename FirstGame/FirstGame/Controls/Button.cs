@@ -44,15 +44,13 @@ namespace FirstGame.Controls
             {
                 mouseReader.UpdateMouseState();
                 Rectangle mouseRect = mouseReader.GetMouseCursor();
-                Debug.WriteLine(Rectangle);
-                Debug.WriteLine(mouseRect);
                 if (mouseRect.Intersects(Rectangle))
                 {
                     PenColor = Color.DarkGray;
-                        if (mouseReader.WasLeftButtonReleased())
-                        {
-                            Click?.Invoke(this, new EventArgs());
-                        }
+                    if (mouseReader.WasLeftButtonReleased())
+                    {
+                        Click?.Invoke(this, new EventArgs());
+                    }
                 }
                 else
                 {

@@ -10,7 +10,6 @@ namespace FirstGame.Sprites
 {
     public class Hero : Sprite
     {
-        private Game1 game1Instance = new Game1();
         private MovementManager movementManager = new MovementManager();
         private Animation heroForwards;
         private Animation heroBackwards;
@@ -81,19 +80,19 @@ namespace FirstGame.Sprites
             // Implement hero-specific draw logic
             if (InputReader.ReadInput().X == -1)
             {
-                spriteBatch.Draw(Texture, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Texture, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
             }
             else if (InputReader.ReadInput().X == 1)
             {
-                spriteBatch.Draw(Texture, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Texture, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
             }
             else if (InputReader.ReadInput().Y == -1)
             {
-                spriteBatch.Draw(Texture, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Texture, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
             }
             else if (InputReader.ReadInput().Y == 1 || InputReader.ReadInput().X == 0 && InputReader.ReadInput().Y == 0)
             {
-                spriteBatch.Draw(Texture, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Texture, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
             }
         }
 

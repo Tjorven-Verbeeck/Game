@@ -1,61 +1,71 @@
 ﻿using FirstGame.Input;
+using FirstGame.Managers;
 using FirstGame.Sprites;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace FirstGame.States
 {
     internal class GameState : State
     {
         private List<Sprite> sprites;
-
-        private Hero hero;
-
         private Texture2D _heroTexture;
+        private Texture2D _bulletTexture;
+        private Hero hero;
+        private Bullet bulletTemplate;
+        private BulletManager bulletManager;
 
-        public GameState(GameWindow window, Game1 game, GraphicsDevice graphicsDevice , ContentManager content) : base(window, game, graphicsDevice, content)
+        public GameState(GameWindow window, Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(window, game, graphicsDevice, content)
         {
-
+            sprites = new List<Sprite>();
+            bulletManager = new BulletManager();
         }
 
         public override void LoadContent()
         {
-            // Hero
             _heroTexture = _content.Load<Texture2D>("Sprites/Hero");
-            hero = new Hero(_heroTexture, new KeyboardReader());
+            _bulletTexture = _content.Load<Texture2D>("Sprites/bullet");
+
+            bulletTemplate = new Bullet(_bulletTexture);
+            hero = new Hero(_heroTexture, _window, bulletTemplate);
+
+            sprites.Add(hero);
         }
-        
+
         public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 _game.ChangeState(new MenuState(_window, _game, _graphicsDevice, _content));
-            hero.Update(gameTime);
+
+            hero.Update(gameTime, sprites);
+            bulletManager.Update(gameTime, sprites);
+
+            foreach (var item in sprites)
+            {
+                Debug.WriteLine(item.Position);
+            }
+
+            // Remove inactive bullets
+            sprites.RemoveAll(sprite => sprite is Bullet bullet && !bullet.IsActive);
         }
 
         public override void PostUpdate()
         {
-            throw new NotImplementedException();
+            // Implement any necessary post-update logic
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
+
+            bulletManager.Draw(spriteBatch, sprites);
             hero.Draw(spriteBatch);
+
             spriteBatch.End();
         }
-
-        
-
-        
-
-        
     }
 }

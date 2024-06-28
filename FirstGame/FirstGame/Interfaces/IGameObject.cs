@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FirstGame.Sprites;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace FirstGame.Interfaces
 {
     public interface IGameObject
     {
-        void Update(GameTime gameTime);
+        void Update(GameTime gameTime, List<Sprite> sprites);
         void Draw(SpriteBatch spriteBatch);
     }
 }

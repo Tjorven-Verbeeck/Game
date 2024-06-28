@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Controls/GUI_Button.png</SourceFile>
-  <SourceTime>2024-06-17T12:44:25.7649778+02:00</SourceTime>
+  <SourceTime>2024-06-19T14:47:21.6264158+02:00</SourceTime>
   <DestFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/Controls/GUI_Button.xnb</DestFile>
-  <DestTime>2024-06-17T12:49:58.2768823+02:00</DestTime>
+  <DestTime>2024-06-23T13:28:30.8167921+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

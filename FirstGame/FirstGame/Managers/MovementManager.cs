@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using SharpDX.Direct2D1.Effects;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,13 @@ namespace FirstGame.Managers
             // Use InputReader and SpeedUp if movable is Hero
             if (movable is Hero hero)
             {
-                var direction = hero.InputReader.ReadInput();
-
+                var direction = hero.keyboardReader.ReadInput();
                 float maxSpeed = 10;
 
                 var distance = direction * hero.Speed;
                 hero.Speed = Limit(hero.Speed, maxSpeed);
                 var futurePosition = hero.Position + distance;
-                if (direction.Equals(new Vector2(0, 0)))
+                if (direction.Equals(Vector2.Zero))
                 {
                     hero.Speed = new Vector2(1, 1);
                 }

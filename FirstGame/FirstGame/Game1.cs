@@ -65,7 +65,6 @@ namespace FirstGame
             {
                 _currentState = _nextState;
                 _currentState.LoadContent();
-
                 _nextState = null;
             }
             _currentState.Update(gameTime);

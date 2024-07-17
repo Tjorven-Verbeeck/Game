@@ -21,7 +21,7 @@ namespace FirstGame.States
         protected GraphicsDevice _graphicsDevice;
         protected ContentManager _content;
 
-        public State(GameWindow window ,Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
+        public State(GameWindow window, Game1 game, GraphicsDevice graphicsDevice, ContentManager content)
         {
             _window = window;
             _game = game;

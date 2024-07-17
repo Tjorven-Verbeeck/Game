@@ -12,6 +12,6 @@ namespace FirstGame.Interfaces
     public interface IGameObject
     {
         void Update(GameTime gameTime, List<Sprite> sprites);
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0);
     }
 }

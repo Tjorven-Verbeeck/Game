@@ -15,6 +15,7 @@ namespace FirstGame.States
         private List<Sprite> sprites;
         private Texture2D _heroTexture;
         private Texture2D _bulletTexture;
+        private List<Texture2D> _Textures;
         private Hero hero;
         private Bullet bulletTemplate;
         private BulletManager bulletManager;
@@ -27,9 +28,11 @@ namespace FirstGame.States
 
         public override void LoadContent()
         {
+            _Textures = new List<Texture2D>();
             _heroTexture = _content.Load<Texture2D>("Sprites/Hero");
             _bulletTexture = _content.Load<Texture2D>("Sprites/bullet");
-
+            _Textures.Add(_heroTexture);
+            _Textures.Add(_bulletTexture);
             bulletTemplate = new Bullet(_bulletTexture);
             hero = new Hero(_heroTexture, _window, bulletTemplate);
 
@@ -43,12 +46,6 @@ namespace FirstGame.States
 
             hero.Update(gameTime, sprites);
             bulletManager.Update(gameTime, sprites);
-
-            foreach (var item in sprites)
-            {
-                Debug.WriteLine(item.Position);
-            }
-
             // Remove inactive bullets
             sprites.RemoveAll(sprite => sprite is Bullet bullet && !bullet.IsActive);
         }
@@ -62,8 +59,8 @@ namespace FirstGame.States
         {
             spriteBatch.Begin();
 
-            bulletManager.Draw(spriteBatch, sprites);
-            hero.Draw(spriteBatch);
+            bulletManager.Draw(spriteBatch, _Textures, sprites);
+            hero.Draw(spriteBatch, _Textures);
 
             spriteBatch.End();
         }

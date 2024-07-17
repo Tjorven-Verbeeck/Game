@@ -26,7 +26,7 @@ namespace FirstGame.Sprites
 
         public Hero(Texture2D texture, GameWindow window, Bullet bulletTemplate) : base(texture)
         {
-            this.Texture = texture;
+            this.TextureName = texture.Name;
             this.keyboardReader = new KeyboardReader();
             this.mouseReader = new MouseReader(window);
             this.BulletTemplate = bulletTemplate;
@@ -91,17 +91,27 @@ namespace FirstGame.Sprites
                 heroForwards.Update(gameTime);
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0)
         {
+            Texture2D tex = textures[0];
+            foreach (Texture2D item in textures)
+            {
+                if (item.Name == this.TextureName)
+                {
+                    tex = item;
+                    break;
+                }
+            }
+
             var input = keyboardReader.ReadInput();
             if (input.X == -1)
-                spriteBatch.Draw(Texture, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
             else if (input.X == 1)
-                spriteBatch.Draw(Texture, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
             else if (input.Y == -1)
-                spriteBatch.Draw(Texture, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
             else
-                spriteBatch.Draw(Texture, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
         }
 
         private void AddBullet(List<Sprite> sprites, Vector2 targetPosition)
@@ -117,7 +127,7 @@ namespace FirstGame.Sprites
             bullet.Speed = new Vector2(500, 500);
             bullet.parent = this; // Set the parent to this hero
 
-            sprites.Add(bullet);            
+            sprites.Add(bullet);
         }
 
         public void Move()

@@ -1,6 +1,7 @@
 ﻿using FirstGame.Enemies;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,28 +11,33 @@ namespace FirstGame.Sprites
     public class Bullet : Sprite
     {
         public bool IsActive { get; set; } = true; // Initial state is active
-
-        public Bullet(Texture2D texture) : base(texture) { }
+        private Vector2 Speed = new Vector2(500, 500);
+        public Bullet(Texture2D texture) : base(texture) 
+        {
+            TextureName = texture.Name;
+        }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
         {
-            Speed = new Vector2(500, 500);
-
             Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (!IsOnScreen(Position))
             {
                 IsActive = false; // Deactivate if out of bounds
+                return;
             }
 
             // Check for collisions with other sprites
             foreach (var sprite in sprites)
             {
-                if (sprite == this.parent) continue; // Skip the parent to prevent self-hit
-
+                if (sprite == this.parent || sprite is Bullet)
+                {
+                    continue;
+                } // Skip the parent to prevent self-hit
+                //!BART
                 if (sprite is Hero && this.parent is Enemy || sprite is Enemy && this.parent is Hero)
                 {
-                    if (this.Rectangle.Intersects(sprite.Rectangle))
+                    if (this.TextureRectangle.Intersects(sprite.TextureRectangle))
                     {
                         HandleCollision(sprite);
                         IsActive = false; // Deactivate bullet after collision
@@ -55,10 +61,10 @@ namespace FirstGame.Sprites
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0)
         {
-            float rotation = (float)Math.Atan2(Direction.Y, Direction.X) + MathHelper.PiOver2;
-            spriteBatch.Draw(Texture, Position, null, Color.White, rotation, new Vector2(Texture.Width / 2, Texture.Height / 2), 0.05f, SpriteEffects.None, 0f);
+            float rotate = (float)Math.Atan2(Direction.Y, Direction.X) + MathHelper.PiOver2;
+            base.Draw(spriteBatch, textures, rotate);
         }
 
         private bool IsOnScreen(Vector2 position)

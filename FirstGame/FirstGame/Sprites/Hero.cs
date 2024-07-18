@@ -3,30 +3,44 @@ using Microsoft.Xna.Framework.Graphics;
 using FirstGame.Input;
 using FirstGame.Interfaces;
 using FirstGame.Managers;
-using SharpDX.Direct3D9;
-using SharpDX.Direct2D1.Effects;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace FirstGame.Sprites
 {
     public class Hero : Sprite
     {
-        private Game1 game1Instance = new Game1();
         private MovementManager movementManager = new MovementManager();
         private Animation heroForwards;
         private Animation heroBackwards;
         private Animation heroLeft;
         private Animation heroRight;
 
-        public IInputReader InputReader { get; set; } // Specific to Hero
+        public bool HasDied = false;
+
+        public KeyboardReader keyboardReader;
+        public MouseReader mouseReader;
 
         public Vector2 SpeedUp { get; set; } // Specific to Hero
+        public Bullet BulletTemplate { get; set; }
 
-        public Hero(Texture2D texture, IInputReader inputReader) : base(texture)
+        public Hero(Texture2D texture, GameWindow window, Bullet bulletTemplate) : base(texture)
         {
-            this.Texture = texture;
-            this.InputReader = inputReader;
+            this.TextureName = texture.Name;
+            this.keyboardReader = new KeyboardReader();
+            this.mouseReader = new MouseReader(window);
+            this.BulletTemplate = bulletTemplate;
 
             // Initialize animations, positions, etc.
+            InitializeAnimations();
+
+            Position = new Vector2(10, 10);
+            Speed = new Vector2(1, 1);
+            SpeedUp = new Vector2(0.1f, 0.1f);
+        }
+
+        private void InitializeAnimations()
+        {
             heroForwards = new Animation();
             heroForwards.AddFrame(new AnimationFrame(new Rectangle(1, 1, 32, 32)));
             heroForwards.AddFrame(new AnimationFrame(new Rectangle(37, 1, 32, 32)));
@@ -46,55 +60,74 @@ namespace FirstGame.Sprites
             heroLeft.AddFrame(new AnimationFrame(new Rectangle(3, 112, 32, 32)));
             heroLeft.AddFrame(new AnimationFrame(new Rectangle(38, 112, 32, 32)));
             heroLeft.AddFrame(new AnimationFrame(new Rectangle(73, 112, 32, 32)));
-
-            Position = new Vector2(10, 10);
-            Speed = new Vector2(1, 1);
-            SpeedUp = new Vector2(0.1f, 0.1f);
-
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime, List<Sprite> sprites)
         {
-            // Implement hero-specific update logic
+            Vector2 movementDirection = keyboardReader.ReadInput();
+
+            mouseReader.UpdateMouseState();
+
             Move();
 
-            if (InputReader.ReadInput().X == -1)
+            UpdateAnimation(gameTime, movementDirection);
+
+            if (mouseReader.WasLeftButtonReleased())
             {
-                heroLeft.Update(gameTime);
-            }
-            else if (InputReader.ReadInput().X == 1)
-            {
-                heroRight.Update(gameTime);
-            }
-            else if (InputReader.ReadInput().Y == -1)
-            {
-                heroBackwards.Update(gameTime);
-            }
-            else if (InputReader.ReadInput().Y == 1)
-            {
-                heroForwards.Update(gameTime);
+                Vector2 targetPosition = mouseReader.GetMouseCursor().Location.ToVector2();
+                AddBullet(sprites, targetPosition);
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        private void UpdateAnimation(GameTime gameTime, Vector2 direction)
         {
-            // Implement hero-specific draw logic
-            if (InputReader.ReadInput().X == -1)
+            if (direction.X == -1)
+                heroLeft.Update(gameTime);
+            else if (direction.X == 1)
+                heroRight.Update(gameTime);
+            else if (direction.Y == -1)
+                heroBackwards.Update(gameTime);
+            else if (direction.Y == 1)
+                heroForwards.Update(gameTime);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0)
+        {
+            Texture2D tex = textures[0];
+            foreach (Texture2D item in textures)
             {
-                spriteBatch.Draw(Texture, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
+                if (item.Name == this.TextureName)
+                {
+                    tex = item;
+                    break;
+                }
             }
-            else if (InputReader.ReadInput().X == 1)
-            {
-                spriteBatch.Draw(Texture, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
-            }
-            else if (InputReader.ReadInput().Y == -1)
-            {
-                spriteBatch.Draw(Texture, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
-            }
-            else if (InputReader.ReadInput().Y == 1 || InputReader.ReadInput().X == 0 && InputReader.ReadInput().Y == 0)
-            {
-                spriteBatch.Draw(Texture, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, game1Instance.scale, SpriteEffects.None, 0f);
-            }
+
+            var input = keyboardReader.ReadInput();
+            if (input.X == -1)
+                spriteBatch.Draw(tex, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+            else if (input.X == 1)
+                spriteBatch.Draw(tex, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+            else if (input.Y == -1)
+                spriteBatch.Draw(tex, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+            else
+                spriteBatch.Draw(tex, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+        }
+
+        private void AddBullet(List<Sprite> sprites, Vector2 targetPosition)
+        {
+            Bullet bullet = BulletTemplate.Clone() as Bullet;
+            bullet.Position = this.Position;
+
+            Vector2 direction = targetPosition - bullet.Position;
+            if (direction != Vector2.Zero)
+                direction.Normalize();
+
+            bullet.Direction = direction;
+            bullet.Speed = new Vector2(500, 500);
+            bullet.parent = this; // Set the parent to this hero
+
+            sprites.Add(bullet);
         }
 
         public void Move()
@@ -102,11 +135,11 @@ namespace FirstGame.Sprites
             movementManager.Move(this);
         }
 
-        public void ChangeInputReader(IInputReader inputReader)
+        public void takeDamage(int damage)
         {
-            this.InputReader = inputReader;
+            HP -= damage;
+            Debug.WriteLine(HP);
         }
 
-        // Additional hero-specific methods and properties
     }
 }

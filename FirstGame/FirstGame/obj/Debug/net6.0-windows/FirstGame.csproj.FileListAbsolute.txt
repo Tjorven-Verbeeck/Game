@@ -83,3 +83,4 @@ C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\Firs
 C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Controls\GUI_Button.xnb
 C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Fonts\File.xnb
 C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Sprites\bullet.xnb
+C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Tiles\tiles.xnb

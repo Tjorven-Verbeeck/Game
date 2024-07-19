@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sprites/bullet.png</SourceFile>
-  <SourceTime>2024-06-21T14:07:12.4300213+02:00</SourceTime>
+  <SourceTime>2024-07-18T11:15:07.6627941+02:00</SourceTime>
   <DestFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/Content/Sprites/bullet.xnb</DestFile>
-  <DestTime>2024-06-21T14:43:24.9732915+02:00</DestTime>
+  <DestTime>2024-07-18T11:18:39.0703943+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

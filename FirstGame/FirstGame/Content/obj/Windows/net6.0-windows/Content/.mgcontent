@@ -11,8 +11,10 @@
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sprites/Enemy_Skeleton(Melee).png</File>
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sprites/Enemy_Skull(Kamikaze).png</File>
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sprites/Hero.png</File>
+    <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Tiles/tiles.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

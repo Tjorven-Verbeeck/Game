@@ -34,7 +34,7 @@ namespace FirstGame.Managers
                     hero.Speed += hero.SpeedUp;
                 }
 
-                if (futurePosition.X + (32 * 3) < 1920 && futurePosition.X > 0 && futurePosition.Y + (32 * 3) < 1080 && futurePosition.Y > 0)
+                if (futurePosition.X + (32 * 2) < 1920 && futurePosition.X > 0 && futurePosition.Y + (32 * 2) < 1080 && futurePosition.Y > 0)
                 {
                     hero.Position = futurePosition;
                 }

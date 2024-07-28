@@ -25,9 +25,6 @@ namespace FirstGame.Managers
                     bullet.Update(gameTime, sprites);
                 }
             }
-            //!BART
-            // Optionally, remove inactive bullets from the sprites list
-            //sprites.RemoveAll(sprite => sprite is Bullet bullet && !bullet.IsActive);
         }
 
         public void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, List<Sprite> sprites)

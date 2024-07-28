@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using FirstGame.States;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace FirstGame.Managers
     internal class TileManager
     {
         private List<Rectangle> _textureStore;
+        private List<Rectangle> collidableTiles;
 
         public TileManager()
         {
@@ -34,15 +36,26 @@ namespace FirstGame.Managers
                 new Rectangle(206,171,32,32), // muur rechts onder
                 new Rectangle(106,110,32,32), // grond
             };
+            //collidableTiles = _textureStore.Where((rect, index) => index != 16).ToList();
+
+            collidableTiles = new List<Rectangle>();
+
+            foreach (var item in GameState._tilemap)
+            {
+                if (item.Value != 17)
+                {
+                    collidableTiles.Add(item.Key);
+                }
+            }
         }
 
-        public void Draw(SpriteBatch spriteBatch, Texture2D tileTextures, Dictionary<Vector2, int> tilemap)
+        public void Draw(SpriteBatch spriteBatch, Texture2D tileTextures, Dictionary<Rectangle, int> tilemap)
         {
             foreach (var item in tilemap)
             {
                 Rectangle dest = new(
-                    (int)item.Key.X * 64,
-                    (int)item.Key.Y * 64,
+                    (int)item.Key.X,
+                    (int)item.Key.Y,
                     64,
                     64
                     );
@@ -51,6 +64,18 @@ namespace FirstGame.Managers
 
                 spriteBatch.Draw(tileTextures, dest, src, Color.White);
             }
+        }
+
+        public bool IsCollidingWithTile(Rectangle entityBounds)
+        {
+            foreach (Rectangle tile in collidableTiles)
+            {
+                if (entityBounds.Intersects(tile))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using FirstGame.Enemies;
+using FirstGame.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FirstGame.Sprites
 {
@@ -12,6 +14,7 @@ namespace FirstGame.Sprites
     {
         public bool IsActive { get; set; } = true; // Initial state is active
         private Vector2 Speed = new Vector2(500, 500);
+        private TileManager tileManager = new TileManager();
         public Bullet(Texture2D texture) : base(texture) 
         {
             TextureName = texture.Name;
@@ -21,11 +24,18 @@ namespace FirstGame.Sprites
         {
             Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (!IsOnScreen(Position))
+            Rectangle bulletRectangle = new Rectangle((int)Position.X, (int)Position.Y, this.textureSize.Width, this.textureSize.Height);
+
+            if (tileManager.IsCollidingWithTile(bulletRectangle))
+            {
+                IsActive = false;
+            }
+
+/*            if (!IsOnScreen(Position))
             {
                 IsActive = false; // Deactivate if out of bounds
                 return;
-            }
+            }*/
 
             // Check for collisions with other sprites
             foreach (var sprite in sprites)
@@ -34,7 +44,6 @@ namespace FirstGame.Sprites
                 {
                     continue;
                 } // Skip the parent to prevent self-hit
-                //!BART
                 if (sprite is Hero && this.parent is Enemy || sprite is Enemy && this.parent is Hero)
                 {
                     if (this.TextureRectangle.Intersects(sprite.TextureRectangle))

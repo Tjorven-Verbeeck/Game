@@ -34,7 +34,7 @@ namespace FirstGame.Sprites
             // Initialize animations, positions, etc.
             InitializeAnimations();
 
-            Position = new Vector2(10, 10);
+            Position = new Vector2(100, 100);
             Speed = new Vector2(1, 1);
             SpeedUp = new Vector2(0.1f, 0.1f);
         }

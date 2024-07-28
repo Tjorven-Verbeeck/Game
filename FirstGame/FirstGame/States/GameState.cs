@@ -21,7 +21,7 @@ namespace FirstGame.States
         private Bullet bulletTemplate;
         private BulletManager bulletManager;
         private TileManager tileManager;
-        protected Dictionary<Vector2, int> _tilemap;
+        public static Dictionary<Rectangle, int> _tilemap;
 
         private Texture2D _tileTextures;
 
@@ -29,12 +29,13 @@ namespace FirstGame.States
         {
             sprites = new List<Sprite>();
             bulletManager = new BulletManager();
+            _tilemap = new Dictionary<Rectangle, int>();
             tileManager = new TileManager();
         }
 
-        protected Dictionary<Vector2, int> LoadMap(string filePath)
+        protected Dictionary<Rectangle, int> LoadMap(string filePath)
         {
-            Dictionary<Vector2, int> result = new();
+            Dictionary<Rectangle, int> result = new();
 
             StreamReader reader = new(filePath);
 
@@ -50,7 +51,7 @@ namespace FirstGame.States
                     {
                         if (value > 0)
                         {
-                            result[new Vector2(x, y)] = value;
+                            result[new Rectangle(x * 64, y * 64, 64, 64)] = value;
                         }
                     }
                 }

@@ -1,1 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sprites/Enemy_Skeleton(Melee).png","C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/Content/Sprites/Enemy_Skeleton(Melee).xnb","TextureProcessor","Texture2DContent",5790,17973,0,1776863
+"C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Tiles/tiles.png","C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/Content/Tiles/tiles.xnb","TextureProcessor","Texture2DContent",31995,228569,0,0094898

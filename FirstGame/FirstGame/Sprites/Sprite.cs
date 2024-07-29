@@ -12,7 +12,7 @@ namespace FirstGame.Sprites
         public Vector2 Direction;
         public string TextureName { get; set; }
         public Rectangle textureSize { get; set; }
-        public bool IsVisible { get; set; }
+        public bool IsActive { get; set; }
         public Vector2 Speed { get; set; }
         private int Width { get; set; }
         private int Height { get; set; }
@@ -24,7 +24,9 @@ namespace FirstGame.Sprites
         public bool IsRemoved = false;
 
         // Health points
-        protected int HP { get; set; }
+        public int Health { get; set; }
+
+        protected int Damage { get; set; }
 
         // Alive status
         protected bool IsDead { get; set; }
@@ -34,9 +36,10 @@ namespace FirstGame.Sprites
             TextureName = texture.Name;
             Width = texture.Width;
             Height = texture.Height;
-            IsVisible = true;
+            IsActive = true;
             Speed = Vector2.Zero;
-            HP = 1; // Default health points
+            Health = 1; // Default health points
+            Damage = 1; // Default damage points
             IsDead = false; // Default alive status
         }
 
@@ -47,15 +50,15 @@ namespace FirstGame.Sprites
 
         public virtual void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0)
         {
-            foreach (Texture2D texture in textures)
+
+        }
+
+        public void TakeDamage(int damage)
+        {
+            Health -= damage;
+            if (Health <= 0)
             {
-                if (texture.Name == TextureName)
-                {
-                    if (IsVisible)
-                    {
-                        spriteBatch.Draw(texture, Position, null, Color.White, rotation, new Vector2(Width / 2, Height / 2), 0.05f, SpriteEffects.None, 0f);
-                    }
-                }
+                IsActive = false; // Deactivate enemy when health drops to zero
             }
         }
 

@@ -14,6 +14,7 @@ namespace FirstGame.Managers
     public class MovementManager
     {
         private Game1 game1Instance = new Game1();
+        private TileManager tileManager = new TileManager();
         public void Move(IMovable movable)
         {
             // Use InputReader and SpeedUp if movable is Hero
@@ -22,22 +23,23 @@ namespace FirstGame.Managers
                 var direction = hero.keyboardReader.ReadInput();
                 float maxSpeed = 10;
 
-                var distance = direction * hero.Speed;
-                hero.Speed = Limit(hero.Speed, maxSpeed);
-                var futurePosition = hero.Position + distance;
+                hero.Speed = Limit(new Vector2(Math.Abs(hero.Speed.X), Math.Abs(hero.Speed.Y)), maxSpeed) * direction;
                 if (direction.Equals(Vector2.Zero))
                 {
-                    hero.Speed = new Vector2(1, 1);
+                    hero.Speed = new Vector2(0, 0);
                 }
                 else
                 {
-                    hero.Speed += hero.SpeedUp;
+                    hero.Speed += hero.SpeedUp * direction;
                 }
 
-                if (futurePosition.X + (32 * 3) < 1920 && futurePosition.X > 0 && futurePosition.Y + (32 * 3) < 1080 && futurePosition.Y > 0)
+                Rectangle heroRectangle = new Rectangle((int)hero.Position.X + (int)maxSpeed * (int)direction.X, (int)hero.Position.Y + (int)maxSpeed * (int)direction.Y, hero.textureSize.Width + 64, hero.textureSize.Height + 64);
+
+                if (tileManager.IsCollidingWithTile(heroRectangle))
                 {
-                    hero.Position = futurePosition;
+                    hero.Speed = new Vector2(0, 0);
                 }
+                hero.Position += hero.Speed;
             }
         }
 
@@ -52,46 +54,5 @@ namespace FirstGame.Managers
             }
             return speed;
         }
-
-
-
-
-
-        // Move with no input
-        /*q
-        private void Move()
-        {
-            position += speed;
-            speed += speedUp;
-            float maxSpeed = 10;
-            speed = Limit(speed, maxSpeed);
-            if (position.X + 140 > 800 || position.X < 0)
-            {
-                speed.X *= -1;
-                speedUp.X *= -1;
-            }
-            if (position.Y + 108 > 480 || position.Y < 0)
-            {
-                speed.Y *= -1;
-                speedUp.Y *= -1;
-            }
-        }
-        */
-
-        // Move with mousetracking
-        /*
-        private void MoveWithMouse()
-        {
-            MouseState state = Mouse.GetState();
-            Vector2 mouseVector = new Vector2(state.X, state.Y);
-
-            position += speed;
-            var direction = mouseVector - position;
-            direction.Normalize();
-            direction = Vector2.Multiply(direction, 0.1f);
-            speed += direction;
-            speed = Limit(speed, 10);
-        }
-        */
     }
 }

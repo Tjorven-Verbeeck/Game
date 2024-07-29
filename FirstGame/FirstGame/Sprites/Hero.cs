@@ -32,7 +32,7 @@ namespace FirstGame.Sprites
             // Initialize animations, positions, etc.
             InitializeAnimations();
 
-            Position = new Vector2(10, 10);
+            Position = new Vector2(100, 100);
             Speed = new Vector2(1, 1);
             SpeedUp = new Vector2(0.1f, 0.1f);
             Health = 5;
@@ -104,13 +104,13 @@ namespace FirstGame.Sprites
 
             var input = keyboardReader.ReadInput();
             if (input.X == -1)
-                spriteBatch.Draw(tex, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroLeft.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
             else if (input.X == 1)
-                spriteBatch.Draw(tex, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroRight.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
             else if (input.Y == -1)
-                spriteBatch.Draw(tex, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroBackwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
             else
-                spriteBatch.Draw(tex, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 3, SpriteEffects.None, 0f);
+                spriteBatch.Draw(tex, Position, heroForwards.CurrentFrame.SourceRectangle, Color.White, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
         }
 
         private void AddBullet(List<Sprite> sprites, Vector2 targetPosition)

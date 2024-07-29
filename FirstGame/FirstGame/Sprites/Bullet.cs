@@ -1,10 +1,12 @@
 ﻿using FirstGame.Enemies;
+using FirstGame.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.Direct3D9;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FirstGame.Sprites
 {
@@ -22,7 +24,9 @@ namespace FirstGame.Sprites
         {
             Position += Direction * Speed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (!IsOnScreen(Position))
+            Rectangle bulletRectangle = new Rectangle((int)Position.X, (int)Position.Y, this.textureSize.Width, this.textureSize.Height);
+
+            if (tileManager.IsCollidingWithTile(bulletRectangle))
             {
                 IsActive = false;
             }
@@ -34,7 +38,6 @@ namespace FirstGame.Sprites
                 {
                     continue;
                 } // Skip the parent to prevent self-hit
-                //!BART
                 if (sprite is Hero && this.parent is Enemy || sprite is Enemy && this.parent is Hero)
                 {
                     if (bulletRectangle.Intersects(new Rectangle(sprite.TextureRectangle.X, sprite.TextureRectangle.Y, 64, 64)))

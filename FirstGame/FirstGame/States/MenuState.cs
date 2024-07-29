@@ -22,7 +22,8 @@ namespace FirstGame.States
         private SpriteFont _buttonfont;
 
         private Button exitButton;
-        private Button startButton;
+        private Button level1Button;
+        private Button level2Button;
 
         private List<Button> _menuButtons;
 
@@ -31,21 +32,28 @@ namespace FirstGame.States
             // Buttons
             _buttonTexture = _content.Load<Texture2D>("Controls/GUI_Button");
             _buttonfont = _content.Load<SpriteFont>("Fonts/File");
-            startButton = new Button(_buttonTexture, _buttonfont, new MouseReader(window))
+            level1Button = new Button(_buttonTexture, _buttonfont, new MouseReader(window))
+            {
+                Position = new Vector2(Game1._screenWidth / 2 - 50, Game1._screenHeight / 2 - 175),
+                Text = "Level1",
+            };
+            level2Button = new Button(_buttonTexture, _buttonfont, new MouseReader(window))
             {
                 Position = new Vector2(Game1._screenWidth / 2 - 50, Game1._screenHeight / 2 - 100),
-                Text = "Start",
+                Text = "Level2",
             };
             exitButton = new Button(_buttonTexture, _buttonfont, new MouseReader(window))
             {
                 Position = new Vector2(Game1._screenWidth / 2 - 50, Game1._screenHeight / 2 - 25),
                 Text = "Exit",
             };
-            startButton.Click += StartButton_Click;
+            level1Button.Click += Level1Button_Click;
+            level2Button.Click += Level2Button_Click;
             exitButton.Click += ExitButton_Click;
             _menuButtons = new List<Button>()
             {
-                startButton,
+                level1Button,
+                level2Button,
                 exitButton
             };
         }
@@ -60,9 +68,13 @@ namespace FirstGame.States
             
         }
 
-        private void StartButton_Click(object sender, System.EventArgs e)
+        private void Level1Button_Click(object sender, System.EventArgs e)
         {
-            _game.ChangeState(new GameState(_window, _game, _graphicsDevice, _content));
+            _game.ChangeState(new Level1State(_window, _game, _graphicsDevice, _content));
+        }
+        private void Level2Button_Click(object sender, System.EventArgs e)
+        {
+            _game.ChangeState(new Level2State(_window, _game, _graphicsDevice, _content));
         }
 
         private void ExitButton_Click(object sender, System.EventArgs e)

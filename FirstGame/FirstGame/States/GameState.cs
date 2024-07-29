@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 
 namespace FirstGame.States
 {
@@ -29,6 +30,35 @@ namespace FirstGame.States
         {
             sprites = new List<Sprite>();
             bulletManager = new BulletManager();
+            _tilemap = new Dictionary<Rectangle, int>();
+            tileManager = new TileManager();
+        }
+
+        protected Dictionary<Rectangle, int> LoadMap(string filePath)
+        {
+            Dictionary<Rectangle, int> result = new();
+
+            StreamReader reader = new(filePath);
+
+            int y = 0;
+            string line;
+            while((line= reader.ReadLine()) != null)
+            {
+                string[] items = line.Split(',');
+
+                for (int x = 0; x < items.Length; x++)
+                {
+                    if (int.TryParse(items[x], out int value))
+                    {
+                        if (value > 0)
+                        {
+                            result[new Rectangle(x * 64, y * 64, 64, 64)] = value;
+                        }
+                    }
+                }
+                y++;
+            }
+            return result;
         }
 
         public override void LoadContent()

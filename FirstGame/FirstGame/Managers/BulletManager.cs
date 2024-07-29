@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace FirstGame.Managers
 {
@@ -17,7 +18,7 @@ namespace FirstGame.Managers
             {
                 if (sprite is Bullet bullet)
                 {
-                    if (bullet.IsActive == false)
+                    if (!bullet.IsActive)
                     {
                         sprites.Remove(sprite);
                         continue;

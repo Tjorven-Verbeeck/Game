@@ -76,11 +76,6 @@ namespace FirstGame.States
                 button.Update(gameTime);
         }
 
-        public override void PostUpdate()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();

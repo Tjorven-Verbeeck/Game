@@ -44,6 +44,18 @@
 /processorParam:TextureFormat=Color
 /build:Sprites/bullet.png
 
+#begin Sprites/Enemy_Muschroom(Trap).png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Sprites/Enemy_Muschroom(Trap).png
+
 #begin Sprites/Enemy_Mushroom(Turret).png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -55,18 +67,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Sprites/Enemy_Mushroom(Turret).png
-
-#begin Sprites/Enemy_Skeleton(Melee).png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Sprites/Enemy_Skeleton(Melee).png
 
 #begin Sprites/Enemy_Skull(Kamikaze).png
 /importer:TextureImporter

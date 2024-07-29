@@ -16,8 +16,6 @@ namespace FirstGame.Sprites
         private Animation heroLeft;
         private Animation heroRight;
 
-        public bool HasDied = false;
-
         public KeyboardReader keyboardReader;
         public MouseReader mouseReader;
 
@@ -37,6 +35,7 @@ namespace FirstGame.Sprites
             Position = new Vector2(10, 10);
             Speed = new Vector2(1, 1);
             SpeedUp = new Vector2(0.1f, 0.1f);
+            Health = 5;
         }
 
         private void InitializeAnimations()
@@ -134,12 +133,5 @@ namespace FirstGame.Sprites
         {
             movementManager.Move(this);
         }
-
-        public void takeDamage(int damage)
-        {
-            HP -= damage;
-            Debug.WriteLine(HP);
-        }
-
     }
 }

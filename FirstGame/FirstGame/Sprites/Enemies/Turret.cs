@@ -22,7 +22,7 @@ namespace FirstGame.Sprites.Enemies
         private double timer; // Timer for controlling firing rate
         private double fireRate = 0.75; // Fire rate in seconds (0.5 seconds)
 
-        public Bullet BulletTemplate { get; set; }
+
 
         public Turret(Texture2D texture, GameWindow window, Bullet bulletTemplate) : base(texture)
         {
@@ -115,22 +115,6 @@ namespace FirstGame.Sprites.Enemies
                     timer = 0;
                 }
             }
-        }
-
-        private void AddBullet(List<Sprite> sprites, Vector2 targetPosition)
-        {
-            Bullet bullet = BulletTemplate.Clone() as Bullet;
-            bullet.Position = this.Position;
-
-            Vector2 direction = targetPosition - bullet.Position;
-            if (direction != Vector2.Zero)
-                direction.Normalize();
-
-            bullet.Direction = direction;
-            bullet.Speed = new Vector2(500, 500);
-            bullet.parent = this; // Set the parent to this enemy
-
-            sprites.Add(bullet);
         }
     }
 }

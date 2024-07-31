@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Controls/GUI_Button.png</File>
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Fonts/File.spritefont</File>
+    <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sounds/Lose.wav</File>
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sounds/Win.wav</File>
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sprites/bullet.png</File>
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sprites/Enemy_Muschroom(Trap).png</File>
@@ -15,6 +16,7 @@
     <File>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Tiles/tiles.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

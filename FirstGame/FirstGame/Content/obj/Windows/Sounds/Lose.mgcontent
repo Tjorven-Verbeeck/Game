@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sounds/Win.wav</SourceFile>
-  <SourceTime>2024-07-31T17:39:16.9146787+02:00</SourceTime>
-  <DestFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/Sounds/Win.xnb</DestFile>
-  <DestTime>2024-07-31T18:58:36.7157288+02:00</DestTime>
+  <SourceFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/Sounds/Lose.wav</SourceFile>
+  <SourceTime>2024-07-31T18:57:53.854934+02:00</SourceTime>
+  <DestFile>C:/Users/tjorv/OneDrive/Bureaublad/Github projecten/Git Game/Game/FirstGame/FirstGame/Content/bin/Windows/Sounds/Lose.xnb</DestFile>
+  <DestTime>2024-07-31T18:58:36.4556056+02:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2022-07-26T13:44:56+02:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

@@ -85,3 +85,4 @@ C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\Firs
 C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Tiles\tiles.xnb
 C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Sprites\Enemy_Muschroom(Trap).xnb
 C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Sounds\Win.xnb
+C:\Users\tjorv\OneDrive\Bureaublad\Github projecten\Git Game\Game\FirstGame\FirstGame\bin\Debug\net6.0-windows\Content\Sounds\Lose.xnb

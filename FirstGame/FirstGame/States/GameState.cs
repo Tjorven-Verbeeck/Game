@@ -19,6 +19,7 @@ namespace FirstGame.States
     {
         protected List<SoundEffect> _Sounds;
         protected SoundEffect _winSound;
+        protected SoundEffect _loseSound;
         protected List<Sprite> sprites;
         protected Texture2D _heroTexture;
         protected Texture2D _bulletTexture;
@@ -81,6 +82,9 @@ namespace FirstGame.States
         {
             _Sounds = new List<SoundEffect>();
             _winSound = _content.Load<SoundEffect>("Sounds/Win");
+            _loseSound = _content.Load<SoundEffect>("Sounds/Lose");
+            _Sounds.Add(_winSound);
+            _Sounds.Add(_loseSound);
             _Textures = new List<Texture2D>();
             _tileTextures = _content.Load<Texture2D>("Tiles/tiles");
             _buttonTexture = _content.Load<Texture2D>("Controls/GUI_Button");
@@ -128,6 +132,7 @@ namespace FirstGame.States
             if (hero.IsActive == false)
             {
                 // lost state
+                _loseSound.Play();
                 _game.ChangeState(new GameOverState(_window, _game, _graphicsDevice, _content));
             }
             bool enemyFound = false;

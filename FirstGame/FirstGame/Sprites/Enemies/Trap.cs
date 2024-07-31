@@ -37,18 +37,7 @@ namespace FirstGame.Sprites.Enemies
         {
             trapAnimation.Update(gameTime);
 
-            // Check for collisions with other sprites
-            foreach (var sprite in sprites)
-            {
-                if (sprite is Hero hero)
-                {
-                    if (new Rectangle(this.TextureRectangle.X, this.TextureRectangle.Y, 64, 64).Intersects(new Rectangle(hero.TextureRectangle.X, hero.TextureRectangle.Y, 64, 64)) && IsActive)
-                    {
-                        hero.TakeDamage(Damage, hero);
-                        IsActive = false; // Deactivate trap after collision
-                    }
-                }
-            }
+            CheckSpriteCollision(sprites);
         }
 
         public override void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0)

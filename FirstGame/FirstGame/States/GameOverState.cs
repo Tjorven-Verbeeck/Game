@@ -26,7 +26,7 @@ namespace FirstGame.States
 
         public GameOverState(GameWindow window, Game1 game, GraphicsDevice graphicsDevice, ContentManager content) : base(window, game, graphicsDevice, content)
         {
-            // Buttons
+            // I did not put this code and the GameWonState code in a sepperate file because i maay want to change the screens at a later point in time sto defferentiate more than what it is now.
             _buttonTexture = _content.Load<Texture2D>("Controls/GUI_Button");
             _buttonfont = _content.Load<SpriteFont>("Fonts/File");
             gameOverButton = new Button(_buttonTexture, _buttonfont, new MouseReader(window))

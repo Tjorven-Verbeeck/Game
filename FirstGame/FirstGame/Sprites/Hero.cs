@@ -20,7 +20,6 @@ namespace FirstGame.Sprites
         public MouseReader mouseReader;
 
         public Vector2 SpeedUp { get; set; } // Specific to Hero
-        public Bullet BulletTemplate { get; set; }
 
         public Hero(Texture2D texture, GameWindow window, Bullet bulletTemplate) : base(texture)
         {
@@ -111,12 +110,12 @@ namespace FirstGame.Sprites
 
         public override void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0)
         {
-            Texture2D tex = textures[0];
+            Texture2D texture = textures[0];
             foreach (Texture2D item in textures)
             {
                 if (item.Name == this.TextureName)
                 {
-                    tex = item;
+                    texture = item;
                     break;
                 }
             }
@@ -126,29 +125,13 @@ namespace FirstGame.Sprites
 
             var input = keyboardReader.ReadInput();
             if (input.X == -1)
-                spriteBatch.Draw(tex, Position, heroLeft.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, Position, heroLeft.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
             else if (input.X == 1)
-                spriteBatch.Draw(tex, Position, heroRight.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, Position, heroRight.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
             else if (input.Y == -1)
-                spriteBatch.Draw(tex, Position, heroBackwards.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
+                spriteBatch.Draw(texture, Position, heroBackwards.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
             else
-                spriteBatch.Draw(tex, Position, heroForwards.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
-        }
-
-        private void AddBullet(List<Sprite> sprites, Vector2 targetPosition)
-        {
-            Bullet bullet = BulletTemplate.Clone() as Bullet;
-            bullet.Position = this.Position;
-
-            Vector2 direction = targetPosition - bullet.Position;
-            if (direction != Vector2.Zero)
-                direction.Normalize();
-
-            bullet.Direction = direction;
-            bullet.Speed = new Vector2(500, 500);
-            bullet.parent = this; // Set the parent to this hero
-
-            sprites.Add(bullet);
+                spriteBatch.Draw(texture, Position, heroForwards.CurrentFrame.SourceRectangle, color, 0f, Vector2.Zero, 2, SpriteEffects.None, 0f);
         }
 
         public void Move()

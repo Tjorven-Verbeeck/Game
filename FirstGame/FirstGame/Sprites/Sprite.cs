@@ -16,6 +16,7 @@ namespace FirstGame.Sprites
         public Vector2 Speed { get; set; }
         private int Width { get; set; }
         private int Height { get; set; }
+        public Bullet BulletTemplate { get; set; }
 
         public Rectangle TextureRectangle => new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
 
@@ -72,6 +73,22 @@ namespace FirstGame.Sprites
                     isFlickering = true;
                 }
             }
+        }
+
+        public void AddBullet(List<Sprite> sprites, Vector2 targetPosition)
+        {
+            Bullet bullet = BulletTemplate.Clone() as Bullet;
+            bullet.Position = this.Position;
+
+            Vector2 direction = targetPosition - bullet.Position;
+            if (direction != Vector2.Zero)
+                direction.Normalize();
+
+            bullet.Direction = direction;
+            bullet.Speed = new Vector2(500, 500);
+            bullet.parent = this; // Set the parent to this hero
+
+            sprites.Add(bullet);
         }
 
         public object Clone()

@@ -71,5 +71,10 @@ namespace FirstGame.Controls
                 spriteBatch.DrawString(_font, Text, new Vector2(x, y), PenColor);
             }
         }
+
+        public void SetText(string newText)
+        {
+            Text = newText;
+        }
     }
 }

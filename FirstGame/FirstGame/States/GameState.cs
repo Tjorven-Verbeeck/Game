@@ -22,6 +22,8 @@ namespace FirstGame.States
         protected Bullet bulletTemplate;
         protected BulletManager bulletManager;
         protected TileManager tileManager;
+        protected Texture2D _buttonTexture;
+        protected SpriteFont _buttonfont;
         public static Dictionary<Rectangle, int> _tilemap;
 
         protected Texture2D _tileTextures;

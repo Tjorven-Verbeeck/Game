@@ -12,7 +12,7 @@ namespace FirstGame.Enemies
         public Enemy(Texture2D texture) : base(texture)
         {
             IsActive = true;
-            Health = 5; // initial health
+            Health = 1; // initial health
             Damage = 1; // damage dealt by this enemy
         }
 

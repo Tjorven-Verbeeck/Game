@@ -27,7 +27,12 @@ namespace FirstGame.Sprites.Enemies
             this.TextureName = texture.Name;
             InitializeAnimations();
 
-            Position = new Vector2(spawn.Next(200, 1720), spawn.Next(200, 880));
+            do
+            {
+                Position = new Vector2(spawn.Next(200, 1720), spawn.Next(200, 880));
+            }
+            while (Position.X > 1650 && Position.Y < 370);
+
             Speed = new Vector2(1, 1);
             Health = 1;
             Damage = 3;

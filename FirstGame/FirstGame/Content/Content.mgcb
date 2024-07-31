@@ -32,6 +32,12 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/File.spritefont
 
+#begin Sounds/Win.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Win.wav
+
 #begin Sprites/bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor

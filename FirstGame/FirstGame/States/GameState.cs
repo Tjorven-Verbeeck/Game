@@ -5,6 +5,7 @@ using FirstGame.Managers;
 using FirstGame.Sprites;
 using FirstGame.Sprites.Enemies;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,6 +17,8 @@ namespace FirstGame.States
 {
     internal class GameState : State
     {
+        protected List<SoundEffect> _Sounds;
+        protected SoundEffect _winSound;
         protected List<Sprite> sprites;
         protected Texture2D _heroTexture;
         protected Texture2D _bulletTexture;
@@ -76,6 +79,8 @@ namespace FirstGame.States
 
         public override void LoadContent()
         {
+            _Sounds = new List<SoundEffect>();
+            _winSound = _content.Load<SoundEffect>("Sounds/Win");
             _Textures = new List<Texture2D>();
             _tileTextures = _content.Load<Texture2D>("Tiles/tiles");
             _buttonTexture = _content.Load<Texture2D>("Controls/GUI_Button");
@@ -136,6 +141,7 @@ namespace FirstGame.States
             if (!enemyFound)
             {
                 // won state
+                _winSound.Play();
                 _game.ChangeState(new GameWonState(_window, _game, _graphicsDevice, _content));
             }
         }

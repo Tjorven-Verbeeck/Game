@@ -35,7 +35,7 @@ namespace FirstGame.Sprites
             Position = new Vector2(100, 100);
             Speed = new Vector2(1, 1);
             SpeedUp = new Vector2(0.1f, 0.1f);
-            Health = 5;
+            Health = 50;
         }
 
         private void InitializeAnimations()

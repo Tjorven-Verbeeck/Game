@@ -13,7 +13,6 @@ namespace FirstGame.Sprites.Enemies
     internal class Trap : Enemy
     {
         private Animation trapAnimation;
-        private Rectangle trapRectangle;
 
         public Trap(Texture2D texture, GameWindow window) : base(texture)
         {
@@ -66,9 +65,6 @@ namespace FirstGame.Sprites.Enemies
                     }
                 }
             }
-
-            
-
         }
     }
 }

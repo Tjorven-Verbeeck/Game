@@ -24,6 +24,7 @@ namespace FirstGame.States
         private Trap trap3;
         private Trap trap4;
         private Trap trap5;
+        private Turret turret1;
         private Button healthButton;
         private List<Button> _level1Buttons;
         private GameWindow window;
@@ -42,9 +43,11 @@ namespace FirstGame.States
             _heroTexture = _content.Load<Texture2D>("Sprites/Hero");
             _bulletTexture = _content.Load<Texture2D>("Sprites/bullet");
             _trapTexture = _content.Load<Texture2D>("Sprites/Enemy_Muschroom(Trap)");
+            _turretTexture = _content.Load<Texture2D>("Sprites/Enemy_Mushroom(Turret)");
             _Textures.Add(_heroTexture);
             _Textures.Add(_bulletTexture);
             _Textures.Add(_trapTexture);
+            _Textures.Add(_turretTexture);
             bulletTemplate = new Bullet(_bulletTexture);
             hero = new Hero(_heroTexture, _window, bulletTemplate);
             trap1 = new Trap(_trapTexture, _window);
@@ -52,6 +55,7 @@ namespace FirstGame.States
             trap3 = new Trap(_trapTexture, _window);
             trap4 = new Trap(_trapTexture, _window);
             trap5 = new Trap(_trapTexture, _window);
+            turret1 = new Turret(_turretTexture, _window, bulletTemplate);
 
             healthButton = new Button(_buttonTexture, _buttonfont, new MouseReader(window))
             {
@@ -69,6 +73,7 @@ namespace FirstGame.States
             sprites.Add(trap3);
             sprites.Add(trap4);
             sprites.Add(trap5);
+            sprites.Add(turret1);
         }
 
         public override void Update(GameTime gameTime)
@@ -81,6 +86,7 @@ namespace FirstGame.States
             trap3.Update(gameTime, sprites);
             trap4.Update(gameTime, sprites);
             trap5.Update(gameTime, sprites);
+            turret1.Update(gameTime, sprites);
 
             bulletManager.Update(gameTime, sprites);
             // Remove inactive bullets
@@ -126,7 +132,8 @@ namespace FirstGame.States
             trap3.Draw(spriteBatch, _Textures);
             trap4.Draw(spriteBatch, _Textures);
             trap5.Draw(spriteBatch, _Textures);
-            trap2.Draw(spriteBatch, _Textures);
+            turret1.Draw(spriteBatch, _Textures);
+
             hero.Draw(spriteBatch, _Textures);
 
             spriteBatch.End();

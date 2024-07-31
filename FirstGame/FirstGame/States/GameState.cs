@@ -18,6 +18,7 @@ namespace FirstGame.States
         protected Texture2D _heroTexture;
         protected Texture2D _bulletTexture;
         protected Texture2D _trapTexture;
+        protected Texture2D _turretTexture;
         protected List<Texture2D> _Textures;
         protected Bullet bulletTemplate;
         protected BulletManager bulletManager;

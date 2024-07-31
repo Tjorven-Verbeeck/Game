@@ -108,7 +108,7 @@ namespace FirstGame.States
             if(hero.IsActive == false)
             {
                 // lost state
-                _game.ChangeState(new MenuState(_window, _game, _graphicsDevice, _content));
+                _game.ChangeState(new GameOverState(_window, _game, _graphicsDevice, _content));
             }
             bool enemyFound = false;
             foreach (var sprite in sprites)

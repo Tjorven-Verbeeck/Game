@@ -20,6 +20,36 @@ namespace FirstGame.Enemies
 
         public override abstract void Draw(SpriteBatch spriteBatch, List<Texture2D> textures, float rotation = 0);
 
-        
+        public string RotateTowards(Vector2 targetPosition, Vector2 ownPosition)
+        {
+            string directionString;
+            
+            Vector2 direction = targetPosition - ownPosition;
+            direction.Normalize();
+
+            if (Math.Abs(direction.X) > Math.Abs(direction.Y))
+            {
+                if (direction.X > 0)
+                {
+                    directionString = "Right";
+                }
+                else
+                {
+                    directionString = "Left";
+                }
+            }
+            else
+            {
+                if (direction.Y > 0)
+                {
+                    directionString = "Forwards";
+                }
+                else
+                {
+                    directionString = "Backwards";
+                }
+            }
+            return directionString;
+        }
     }
 }

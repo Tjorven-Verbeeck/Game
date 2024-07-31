@@ -21,9 +21,8 @@ namespace FirstGame.Sprites.Enemies
             InitializeAnimations();
 
             Position = new Vector2(spawn.Next(200,1720), spawn.Next(200, 880));
-            //Rectangle trapRectangle = new Rectangle((int)Position.X, (int)Position.Y, this.textureSize.Width, this.textureSize.Height);
             Health = 1;
-            Damage = 1;
+            Damage = 3;
         }
 
         private void InitializeAnimations()

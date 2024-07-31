@@ -31,7 +31,6 @@ namespace FirstGame.Sprites.Enemies
             InitializeAnimations();
 
             Position = new Vector2(spawn.Next(200, 1720), spawn.Next(200, 880));
-            //Rectangle trapRectangle = new Rectangle((int)Position.X, (int)Position.Y, this.textureSize.Width, this.textureSize.Height);
             Health = 1;
             timer = 0; // Initialize the timer
         }
@@ -81,7 +80,22 @@ namespace FirstGame.Sprites.Enemies
             var player = sprites.FirstOrDefault();
             if (player != null)
             {
-                RotateTowards(new Vector2(player.Position.X + 32, player.Position.Y + 32));
+                string directionString = RotateTowards(new Vector2(player.Position.X + 32, player.Position.Y + 32), new Vector2(Position.X + 32, Position.Y + 32));
+                switch (directionString)
+                {
+                    case "Right":
+                        currentAnimation = turretRight;
+                        break;
+                    case "Left":
+                        currentAnimation = turretLeft;
+                        break;
+                    case "Forwards":
+                        currentAnimation = turretForwards;
+                        break;
+                    case "Backwards":
+                        currentAnimation = turretBackwards;
+                        break;
+                }
             }
 
             currentAnimation.Update(gameTime);
@@ -99,35 +113,6 @@ namespace FirstGame.Sprites.Enemies
 
                     // Reset the timer after firing
                     timer = 0;
-                }
-            }
-        }
-
-        private void RotateTowards(Vector2 targetPosition)
-        {
-            Vector2 direction = targetPosition - Position;
-            direction.Normalize();
-
-            if (Math.Abs(direction.X) > Math.Abs(direction.Y))
-            {
-                if (direction.X > 0)
-                {
-                    currentAnimation = turretRight;
-                }
-                else
-                {
-                    currentAnimation = turretLeft;
-                }
-            }
-            else
-            {
-                if (direction.Y > 0)
-                {
-                    currentAnimation = turretForwards;
-                }
-                else
-                {
-                    currentAnimation = turretBackwards;
                 }
             }
         }

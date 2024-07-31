@@ -52,15 +52,15 @@ namespace FirstGame.Sprites
         private void GetHit(Sprite sprite)
         {
             // Example: Apply damage or any other interaction logic
-            if (sprite is Hero)
+            if (sprite is Hero hero)
             {
                 // Handle hero being hit by this bullet
-                (sprite as Hero).TakeDamage(Damage); // Example damage amount
+                hero.TakeDamage(Damage, hero); // Example damage amount
             }
-            else if (sprite is Enemy)
+            else if (sprite is Enemy enemy)
             {
                 // Handle enemy being hit by this bullet
-                (sprite as Enemy).TakeDamage(Damage); // Example damage amount
+                enemy.TakeDamage(Damage, enemy); // Example damage amount
             }
         }
 

@@ -108,13 +108,12 @@ namespace FirstGame.Sprites.Enemies
             // Check for collisions with other sprites
             foreach (var sprite in sprites)
             {
-                if (sprite is Hero)
+                if (sprite is Hero hero)
                 {
                     if (new Rectangle(this.TextureRectangle.X, this.TextureRectangle.Y, 64, 64).Intersects(new Rectangle(sprite.TextureRectangle.X, sprite.TextureRectangle.Y, 64, 64)) && IsActive)
                     {
-                        (sprite as Hero).TakeDamage(Damage);
+                        hero.TakeDamage(Damage, hero);
                         IsActive = false; // Deactivate trap after collision
-                        Debug.WriteLine(sprite.Health);
                     }
                 }
             }

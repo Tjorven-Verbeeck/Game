@@ -28,8 +28,13 @@ namespace FirstGame.Sprites
 
         protected int Damage { get; set; }
 
-        // Alive status
-        protected bool IsDead { get; set; }
+        // Fields for invulnerability and flickering
+        protected bool isInvulnerable = false;
+        protected float invulnerabilityTime = 1f; // Half a second
+        protected float invulnerabilityTimer = 0f;
+        protected bool isFlickering = false;
+        protected float flickerRate = 0.1f; // Flicker every 0.1 seconds
+        protected float flickerTimer = 0f;
 
         public Sprite(Texture2D texture)
         {
@@ -40,7 +45,6 @@ namespace FirstGame.Sprites
             Speed = Vector2.Zero;
             Health = 1; // Default health points
             Damage = 1; // Default damage points
-            IsDead = false; // Default alive status
         }
 
         public virtual void Update(GameTime gameTime, List<Sprite> sprites)
@@ -53,12 +57,20 @@ namespace FirstGame.Sprites
 
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, Sprite target)
         {
-            Health -= damage;
-            if (Health <= 0)
+            if (!target.isInvulnerable)
             {
-                IsActive = false; // Deactivate enemy when health drops to zero
+                Health -= damage;
+                if (Health <= 0)
+                {
+                    IsActive = false; // Deactivate enemy when health drops to zero
+                }
+                if (target is Hero hero)
+                {
+                    isInvulnerable = true;
+                    isFlickering = true;
+                }
             }
         }
 
